@@ -1,10 +1,9 @@
 # Music-Visualizer-Python-Arduino
 This project uses a python script to perform real-time FFT on an input audio file and then send the frequency levels to an Arduino Uno to be displayed on an LED matrix.
 
-## Current Status of the Project
-So far, I have set up the circuit to contain 1 row of 8 LEDs on a breadboard to show the frequency level for 1 frequency from the audio file.
-The LED's are driven from the parallel output pins of two 4-bit shift registers(SN74LS194AN). The Arduino is responsible for providing the data
-in an appropriate format to the shift registers.
+## Current Project Status
+So far,the circuit is set up to contain 1 row of 8 LEDs on a breadboard to show the frequency level for 1 frequency from the audio file.
+The LEDs are driven from the parallel output pins of two 4-bit shift registers(SN74LS194AN). The Arduino is responsible for providing the datain an appropriate format to the shift registers.
 
 ## Files in this Repository
 1. convertmp3towav.sh - bash script to help convert any mp3 file to wav file of sampling rate is 22050Hz; to be used by the python script
