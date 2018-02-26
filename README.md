@@ -3,7 +3,7 @@ This project uses a python script to perform real-time FFT on an input audio fil
 
 ## Current Project Status
 So far,the circuit is set up to contain 1 row of 8 LEDs on a breadboard to show the frequency level for 1 frequency from the audio file.
-The LEDs are driven from the parallel output pins of two 4-bit shift registers(SN74LS194AN). The Arduino is responsible for providing the datain an appropriate format to the shift registers.
+The LEDs are driven from the parallel output pins of two 4-bit shift registers(SN74LS194AN). The Arduino is responsible for providing the data in an appropriate format to the shift registers.
 
 ## Files in this Repository
 1. convertmp3towav.sh - bash script to help convert any mp3 file to wav file of sampling rate is 22050Hz; to be used by the python script
@@ -20,5 +20,7 @@ performs Fast Fourier Transform(FFT) on that data. The strength levels of the re
 a level between 0 to 8 is sent as a byte serially to the Arduino. This process repeats until the whole audio file is played. 
 
 4. Visualizer_graphics.py - This python script helps in displaying real-time frequency strength levels of the audio to the computer screen.
-It is not currently being used in the project as there is a latency issue whenever the graphical representation is updated on the screen.
-The audio stream stops its playback because of this latency that is introduced.
+Currently, the Visualization works but the FFT frequencies that are displayed aren't very sensitive to the music frequencies
+
+## How to RUN
+python Visualizer_graphics.py music_file_with_22.05KHz_sampling
