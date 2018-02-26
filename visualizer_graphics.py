@@ -1,11 +1,16 @@
 from graphics import *
+import sys
+import threading
+from time import sleep
+import visualizer as vz
+
 #Constants
 #Window Size
 WIN_HEIGHT = 900
 WIN_WIDTH = 1600
 WIN_BACK_COLOR = "black"
 
-NO_OF_BANDS=10
+NO_OF_BANDS=9
 BORDER_PADDING=100
 BAR_WIDTH=50
 BAR_HEIGHT=500
@@ -16,6 +21,8 @@ INTER_BAND_GAP=(AVAIL_WIDTH-NO_OF_BANDS*BAR_WIDTH)/(NO_OF_BANDS-1)+BAR_WIDTH
 
 WIN = GraphWin("Graphic Visualizer", WIN_WIDTH, WIN_HEIGHT)
 
+lock = threading.Lock()
+audio_thread = threading.Thread(target=vz.main, args=(sys.argv[1],lock))
 def draw_Rectangle(x, y, width, height,out_color, fill_color):
         r = Rectangle(Point(x, y), Point(x+width,y+height))
         r.setOutline(out_color)
@@ -44,6 +51,16 @@ def graphics_update_levels(freq_levels):
                 #draw new level
                 draw_Rectangle(x_top_left, y_top_left, BAR_WIDTH, current_freq_height, "white", "green")
 
+def main():
+        print("Graphics Thread Started")
+        audio_thread.start()
+        graphics_setup(vz.freq_list)
+        while(True):
+                sleep(0.05)
+                graphics_update_levels(vz.scaled_fft)
+        graphics_shutdown()
+
 def graphics_shutdown():
         WIN.close()
-        
+
+main()
