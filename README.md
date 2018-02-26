@@ -21,6 +21,7 @@ a level between 0 to 8 is sent as a byte serially to the Arduino. This process r
 
 4. Visualizer_graphics.py - This python script helps in displaying real-time frequency strength levels of the audio to the computer screen.
 Currently, the Visualization works but the FFT frequencies that are displayed aren't very sensitive to the music frequencies
+![alt text](https://github.com/jcyriac2/Music-Visualizer-Python-Arduino/blob/master/Visualizer.png)
 
 ## How to RUN
 python Visualizer_graphics.py music_file_with_22.05KHz_sampling
